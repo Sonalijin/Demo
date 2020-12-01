@@ -1,5 +1,5 @@
 import React from "react";
-//import Footer from "./Footer";
+import Footer from "./Footer";
 import Header from "./Header";
 //import Img from "./Img";
 import InformationCard from "./InformationCard";
@@ -25,6 +25,7 @@ const MyResume = (props) => {
       <Header>Associate Software Engineer</Header>
 
       <InformationCard />
+      <Footer />
     </div>
   );
 };
