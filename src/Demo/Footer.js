@@ -5,10 +5,10 @@ const Footer = () => {
     <div
       style={{
         textAlign: "center",
-        fontSize: 24,
+        fontSize: 20,
         padding: 10,
-        fontStyle: "italic",
         fontWeight: 400,
+        fontFamily: "Jost-Regular",
       }}
     >
       Sonali Jain - Sonalijain057@gmil.com - Referance and Request

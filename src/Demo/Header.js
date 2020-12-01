@@ -7,6 +7,7 @@ const AboutHeader = () => {
           textAlign: "center",
           fontSize: 42,
           padding: 10,
+          fontFamily: "Jost-Bold",
         }}
       >
         About Us
@@ -27,10 +28,15 @@ const Header = (props) => {
     overflowY: "hidden",
     marignTop: 50,
     fontSize: 24,
-    fontFamily: "sans-serif",
+    fontFamily: "Jost-Medium",
     flexDirection: "row",
   };
-  const imageStyle = { height: 50, width: 50, borderRadius: 50 / 2 };
+  const imageStyle = {
+    height: 50,
+    width: 50,
+    borderRadius: 50 / 2,
+    backgoundColor: "black",
+  };
   return (
     <div>
       <div
@@ -47,7 +53,7 @@ const Header = (props) => {
               padding: 10,
               fontSize: 48,
               fontWeight: 500,
-              fontFamily: "roboto",
+              fontFamily: "Jost-Bold",
             }}
           >
             Sonali Jain
@@ -64,7 +70,6 @@ const Header = (props) => {
             style={{
               flexDirection: "row",
               display: "flex",
-              backgoundColor: "black",
             }}
           >
             <img src="../github.png" alt="github" style={imageStyle} />
@@ -73,8 +78,16 @@ const Header = (props) => {
             <img src="../twitter.png" style={imageStyle} />
             <img src="../youtub.png" style={imageStyle} />
           </div>
-          <div style={{ paddingTop: 10 }}>Email: sonalijain057@gmail.com</div>
-          <div>Web: https://github.com/Sonalijin/Demo</div>
+          <div
+            style={{ paddingTop: 10, fontFamily: "Jost-Regular", fontSize: 20 }}
+          >
+            Email: sonalijain057@gmail.com
+          </div>
+          <div
+            style={{ paddingTop: 10, fontFamily: "Jost-Regular", fontSize: 20 }}
+          >
+            Web: https://github.com/Sonalijin/Demo
+          </div>
         </div>
       </div>
       <AboutHeader />

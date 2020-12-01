@@ -24,6 +24,7 @@ const InformationCard = () => {
             textAlign: "center",
             fontSize: 42,
             padding: 10,
+            fontFamily: "Jost-Bold",
           }}
         >
           Little More About Me
@@ -36,10 +37,9 @@ const InformationCard = () => {
         ></div>
         <div
           style={{
-            fontsize: 20,
+            fontSize: 20,
             padding: 10,
-            fontWeight: 500,
-            fontFamily: "roboto",
+            fontFamily: "Jost-Regular",
           }}
         >
           Alongside my interests in software engineering some of my other
@@ -61,6 +61,7 @@ const InformationCard = () => {
             textAlign: "center",
             fontSize: 42,
             padding: 10,
+            fontFamily: "Jost-Bold",
           }}
         >
           Education
@@ -83,15 +84,16 @@ const InformationCard = () => {
             style={{
               display: "flex",
               flexDirection: "column",
+              marign: 10,
               padding: 10,
-              flexBasis: "77%",
+              flexBasis: "40%",
             }}
           >
             <div
               style={{
-                fontSize: 42,
+                fontSize: 36,
                 paddingTop: 5,
-                fontWeight: "bold",
+                fontFamily: "Jost-Medium",
               }}
             >
               GLA University
@@ -100,7 +102,7 @@ const InformationCard = () => {
               style={{
                 fontSize: 20,
                 paddingTop: 5,
-                fontWeight: 500,
+                fontFamily: "Jost-Regular",
               }}
             >
               Bachelor of Technology
@@ -109,7 +111,7 @@ const InformationCard = () => {
               style={{
                 fontSize: 20,
                 paddingTop: 5,
-                fontWeight: 400,
+                fontFamily: "Jost-Regular",
               }}
             >
               2015 - 2019
@@ -119,9 +121,7 @@ const InformationCard = () => {
             style={{
               fontSize: 20,
               padding: 10,
-              fontWeight: 400,
-
-              fontFamily: "roboto",
+              fontFamily: "Jost-Regular",
             }}
           >
             During my time at GLA I learnt most of my key skills that have I
@@ -151,35 +151,33 @@ const InformationCard = () => {
             flexDirection: "column",
             padding: 10,
             margin: 10,
-            flexBasis: "70%",
+            flexBasis: "40%",
           }}
         >
           <div
             style={{
               fontSize: 36,
-              fontFamily: "roboto",
-              fontWeight: 500,
+              fontFamily: "Jost-Medium",
+
               //flex: 2,
             }}
           >
             NIIT LTD
           </div>
-          <div
-            style={{ fontSize: 18, fontFamily: "roboto", fontStyle: "italic" }}
-          >
+          <div style={{ fontSize: 20, fontFamily: "Jost-Regular" }}>
             www.niit.com
           </div>
           <div
             style={{
               fontSize: 20,
-              fontFamily: "roboto",
-              fontWeight: 500,
+
+              fontFamily: "Jost-Regular",
               paddingTop: 5,
             }}
           >
             Associate Software Engineer
           </div>
-          <div style={{ fontSize: 20, fontFamily: "roboto" }}>
+          <div style={{ fontSize: 20, fontFamily: "Jost-Regular" }}>
             August 2019 - November 2020
           </div>
         </div>
@@ -192,7 +190,7 @@ const InformationCard = () => {
           <div
             style={{
               fontSize: 20,
-              fontFamily: "roboto",
+              fontFamily: "Jost-Regular",
               paddingTop: 10,
               //paddingLeft: 140,
             }}
@@ -213,6 +211,7 @@ const InformationCard = () => {
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
+          justifyContent: "space-between",
         }}
       >
         <Img />
@@ -220,9 +219,16 @@ const InformationCard = () => {
           style={{
             display: "flex",
             flexDirection: "row",
+            flexBasis: "90%",
           }}
         >
-          <div>
+          <div
+            style={{
+              fontFamily: "Jost-Regular",
+              fontSize: 20,
+              textAlign: "center",
+            }}
+          >
             An enthusiastic highly motivated and leadership
             quality, a bachelor's degree in Computer Science Engineering. Eager
             to learn new technologies and methodologies.
@@ -234,6 +240,7 @@ const InformationCard = () => {
           textAlign: "center",
           fontSize: 42,
           padding: 10,
+          fontFamily: "Jost-Bold",
         }}
       >
         Project
@@ -248,9 +255,8 @@ const InformationCard = () => {
       <div
         style={{
           textAlign: "center",
-          fontSize: 28,
-          fontFamily: "roboto",
-          fontWeight: "bold",
+          fontSize: 36,
+          fontFamily: "Jost-Medium",
           padding: 10,
         }}
       >
@@ -259,9 +265,8 @@ const InformationCard = () => {
       <div
         style={{
           textAlign: "center",
-          fontSize: 18,
-          fontFamily: "roboto",
-          fontWeight: 400,
+          fontSize: 20,
+          fontFamily: "Jost-Regular",
           padding: 10,
         }}
       >
@@ -272,7 +277,7 @@ const InformationCard = () => {
         style={{
           textAlign: "center",
           fontSize: 20,
-          fontFamily: "roboto",
+          fontFamily: "Jost-Regular",
           padding: 10,
         }}
       >
@@ -286,6 +291,7 @@ const InformationCard = () => {
           textAlign: "center",
           fontSize: 42,
           padding: 10,
+          fontFamily: "Jost-Bold",
         }}
       >
         Experience
