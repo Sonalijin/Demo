@@ -1,4 +1,5 @@
 import React from "react";
+
 const AboutHeader = () => {
   return (
     <div>
@@ -15,7 +16,6 @@ const AboutHeader = () => {
       <div
         style={{
           borderTop: "3px dashed #bbb",
-          //   textAlign: "center",
         }}
       ></div>
     </div>
@@ -35,7 +35,7 @@ const Header = (props) => {
     height: 50,
     width: 50,
     borderRadius: 50 / 2,
-    backgoundColor: "black",
+    cursor: "pointer",
   };
   return (
     <div>
@@ -72,19 +72,79 @@ const Header = (props) => {
               display: "flex",
             }}
           >
-            <img src="../github.png" alt="github" style={imageStyle} />
-            <img src="../insta.png" style={imageStyle} />
-            <img src="../linkedin.png" style={imageStyle} />
-            <img src="../twitter.png" style={imageStyle} />
-            <img src="../youtub.png" style={imageStyle} />
+            <img
+              src="../github.png"
+              onClick={() => {
+                const url = "https://github.com/Sonalijin/Demo";
+                window.open(url, "_blank");
+              }}
+              style={imageStyle}
+            />
+
+            <img
+              src="../instagram.png"
+              onClick={() => {
+                window.open("https://www.instagram.com/sonalij460/", "_blank");
+              }}
+              style={imageStyle}
+            />
+
+            <img
+              src="../linkedin.png"
+              onClick={() => {
+                window.open(
+                  "https://www.linkedin.com/in/sonali-jain-33a6a713a/",
+                  "_blank"
+                );
+              }}
+              style={imageStyle}
+            />
+
+            <img
+              src="../twitter.png"
+              onClick={() => {
+                window.open("https://twitter.com/sonalij460", "_blank");
+              }}
+              style={imageStyle}
+            />
+
+            <img
+              src="../youtube.png"
+              onClick={() => {
+                window.open(
+                  "https://www.youtube.com/channel/UCYRTzNe8sMCC88IiUv85SKA?view_as=subscriber",
+                  "_blank"
+                );
+              }}
+              style={imageStyle}
+            />
           </div>
           <div
-            style={{ paddingTop: 10, fontFamily: "Jost-Regular", fontSize: 20 }}
+            style={{
+              paddingTop: 10,
+              fontFamily: "Jost-Regular",
+              fontSize: 20,
+              "&:hover": {
+                textDecoration: "underline",
+              },
+            }}
           >
             Email: sonalijain057@gmail.com
           </div>
           <div
-            style={{ paddingTop: 10, fontFamily: "Jost-Regular", fontSize: 20 }}
+            style={{
+              paddingTop: 10,
+              fontFamily: "Jost-Regular",
+              fontSize: 20,
+              cursor: "pointer",
+              "&:hover": {
+                textDecoration: "underline",
+              },
+            }}
+            onClick={() => {
+              const url = "https://github.com/Sonalijin/Demo";
+              window.open(url, "_blank");
+            }}
           >
             Web: https://github.com/Sonalijin/Demo
           </div>
@@ -94,4 +154,5 @@ const Header = (props) => {
     </div>
   );
 };
+
 export default Header;
