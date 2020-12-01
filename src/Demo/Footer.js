@@ -8,6 +8,7 @@ const Footer = () => {
         fontSize: 24,
         padding: 10,
         fontStyle: "italic",
+        fontWeight: 400,
       }}
     >
       Sonali Jain - Sonalijain057@gmil.com - Referance and Request
