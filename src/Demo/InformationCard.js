@@ -18,7 +18,6 @@ const InformationCard = () => {
   const LittleMore = () => {
     return (
       <div>
-        {" "}
         <div
           style={{
             textAlign: "center",
