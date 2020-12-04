@@ -1,17 +1,34 @@
 import React from "react";
-
+function hoverEvent(e) {
+  e.target.style.textDecoration = "underline";
+}
+function hoverOut(e) {
+  e.target.style.textDecoration = "";
+}
 const InformationCard = () => {
   const Img = () => {
     return (
       <div
         style={{
-          overflow: "auto",
-          borderRadius: "50%",
-          roundedcolor: "#eee",
-          padding: 10,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          overflow: "hidden",
+          backgroundColor: "lightgray",
+          borderWidth: 2,
+          height: 150,
+          width: 150,
+          borderRadius: 150 / 2,
         }}
       >
-        <img src="../soni.jpg" alt="soni" height="150px" width="100px" />
+        <img
+          src="../woman.png"
+          style={{
+            height: 150,
+            width: 150,
+            borderRadius: 150 / 2,
+          }}
+        />
       </div>
     );
   };
@@ -138,8 +155,6 @@ const InformationCard = () => {
         style={{
           display: "flex",
           flexDirection: "row",
-          //padding: 10,
-          //margin: 10,
           justifyContent: "space-between",
           alignItems: "center",
         }}
@@ -157,13 +172,19 @@ const InformationCard = () => {
             style={{
               fontSize: 36,
               fontFamily: "Jost-Medium",
-
-              //flex: 2,
             }}
           >
             NIIT LTD
           </div>
-          <div style={{ fontSize: 20, fontFamily: "Jost-Regular" }}>
+          <div
+            style={{
+              fontSize: 20,
+              fontFamily: "Jost-Regular",
+              cursor: "pointer",
+            }}
+            onMouseEnter={hoverEvent}
+            onMouseOut={hoverOut}
+          >
             www.niit.com
           </div>
           <div
@@ -191,7 +212,6 @@ const InformationCard = () => {
               fontSize: 20,
               fontFamily: "Jost-Regular",
               paddingTop: 10,
-              //paddingLeft: 140,
             }}
           >
             Every IT company needs its Software Developer and The NIIT LTD
@@ -210,28 +230,22 @@ const InformationCard = () => {
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
-          justifyContent: "space-between",
+          paddingTop: 20,
         }}
       >
         <Img />
+
         <div
           style={{
-            display: "flex",
-            flexDirection: "row",
-            flexBasis: "90%",
+            fontFamily: "Jost-Regular",
+            fontSize: 20,
+            textAlign: "center",
+            paddingLeft: 16,
           }}
         >
-          <div
-            style={{
-              fontFamily: "Jost-Regular",
-              fontSize: 20,
-              textAlign: "center",
-            }}
-          >
-            An enthusiastic highly motivated and leadership
-            quality, a bachelor's degree in Computer Science Engineering. Eager
-            to learn new technologies and methodologies.
-          </div>
+          An enthusiastic highly motivated and leadership quality, a bachelor's
+          degree in Computer Science Engineering. Eager to learn new
+          technologies and methodologies.
         </div>
       </div>
       <div
@@ -248,7 +262,6 @@ const InformationCard = () => {
         style={{
           borderTop: "3px dashed #bbb",
           textAlign: "center",
-          // transform: "translate(0px, -220px) rotate(0deg)",
         }}
       ></div>
       <div

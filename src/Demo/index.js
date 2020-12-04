@@ -9,17 +9,11 @@ const MyResume = (props) => {
     <div
       style={{
         flex: 1,
-        backgroundColor: "#fff",
-        //alignItems: "center",
         display: "flex",
         flexDirection: "column",
-        overflowX: "hidden",
-        overflowY: "hidden",
-        maxWidth: 1400,
-        margin: "auto",
-        height: "100%",
-        width: "100%",
+        overflow: "hidden",
         backgroundColor: "#aaa",
+        padding: 16,
       }}
     >
       <Header>Associate Software Engineer</Header>

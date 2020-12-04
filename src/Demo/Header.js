@@ -1,5 +1,10 @@
 import React from "react";
-
+function hoverEvent(e) {
+  e.target.style.textDecoration = "underline";
+}
+function hoverOut(e) {
+  e.target.style.textDecoration = "";
+}
 const AboutHeader = () => {
   return (
     <div>
@@ -26,7 +31,7 @@ const Header = (props) => {
     padding: 10,
     overflowX: "hidden",
     overflowY: "hidden",
-    marignTop: 50,
+    marginTop: -5,
     fontSize: 24,
     fontFamily: "Jost-Medium",
     flexDirection: "row",
@@ -34,6 +39,8 @@ const Header = (props) => {
   const imageStyle = {
     height: 50,
     width: 50,
+    marginRight: 10,
+    marginTop: 10,
     borderRadius: 50 / 2,
     cursor: "pointer",
   };
@@ -124,10 +131,10 @@ const Header = (props) => {
               paddingTop: 10,
               fontFamily: "Jost-Regular",
               fontSize: 20,
-              "&:hover": {
-                textDecoration: "underline",
-              },
+              cursor: "pointer",
             }}
+            onMouseEnter={hoverEvent}
+            onMouseOut={hoverOut}
           >
             Email: sonalijain057@gmail.com
           </div>
@@ -137,10 +144,9 @@ const Header = (props) => {
               fontFamily: "Jost-Regular",
               fontSize: 20,
               cursor: "pointer",
-              "&:hover": {
-                textDecoration: "underline",
-              },
             }}
+            onMouseEnter={hoverEvent}
+            onMouseOut={hoverOut}
             onClick={() => {
               const url = "https://github.com/Sonalijin/Demo";
               window.open(url, "_blank");
