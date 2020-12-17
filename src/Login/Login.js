@@ -1,9 +1,20 @@
-import React, { useState } from "react";
+import Axios from "axios";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 import { FarmerLogoIcon } from "../images";
 
 export const Login = () => {
   const [email, setemail] = useState(void 0);
   const [password, setpassword] = useState(void 0);
+
+  useEffect(() => {
+    axios.get("https://localhost:3000//api/login").then((res) => {
+      setemail(res.data);
+      setpassword(res.data);
+    });
+  }, []);
+
   return (
     <div
       style={{
@@ -25,7 +36,7 @@ export const Login = () => {
           flex: 1,
           flexDirection: " column",
           alignItems: "center",
-          // justifyContent: "center",
+          justifyContent: "center",
         }}
       >
         <div style={{ display: "flex", fontSize: 24, margin: 20 }}>
@@ -33,11 +44,10 @@ export const Login = () => {
           Login Here
         </div>
         <input
-        name="Email"
+          name="Email"
           type="email"
           placeholder="Email"
           value={email}
-         
           onChange={(e) => {
             setemail(e.target.value);
           }}
@@ -58,6 +68,7 @@ export const Login = () => {
         />
         <input
           type="password"
+          name="password"
           placeholder="Password"
           value={password}
           onchange={setpassword}
@@ -79,8 +90,7 @@ export const Login = () => {
         />
         <div
           onClick={() => {
-            console.log("@@@@@hello world", email, password);
-            
+            console.log("hello world", email, password);
           }}
           style={{
             display: "flex",
@@ -97,6 +107,12 @@ export const Login = () => {
           }}
         >
           Login
+        </div>
+        <div style={{ display: "flex", flexDirection: "row", marginTop: 20 }}>
+          <div>You haven't Account</div>
+          <div style={{ paddingLeft: 4 }}>
+            <Link to="/SignUp"> SignUp Here.</Link>
+          </div>
         </div>
       </div>
     </div>
