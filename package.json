@@ -1,5 +1,6 @@
 {
   "homepage": "https://Sonalijin.github.io/Demo",
+  "proxy":"http://localhost:3001",
   "name": "demo-resume",
   "version": "0.1.0",
   "private": true,
