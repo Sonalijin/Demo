@@ -1,4 +1,3 @@
-import Axios from "axios";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -8,12 +7,12 @@ export const Login = () => {
   const [email, setemail] = useState(void 0);
   const [password, setpassword] = useState(void 0);
 
-  useEffect(() => {
-    axios.get("https://localhost:3000//api/login").then((res) => {
+  /*useEffect(() => {
+    axios.get("https://localhost:3000/login").then((res) => {
       setemail(res.data);
       setpassword(res.data);
     });
-  }, []);
+  }, []);*/
 
   return (
     <div
@@ -90,7 +89,23 @@ export const Login = () => {
         />
         <div
           onClick={() => {
-            console.log("hello world", email, password);
+            console.log("@@@@@sonali", email, password);
+            axios
+              .get(`http://localhost:3001`)
+              .then((res) => {
+                console.log("@@@@@@server se call bapas a gai", res);
+              })
+              .catch((err) => {
+                console.log("@@@@get error", err);
+              });
+            axios
+              .post(`http://localhost:3001/login`, { email, password })
+              .then((res) => {
+                console.log("@@@@@@server se call bapas a gai", res);
+              })
+              .catch((err) => {
+                console.log("@@@@get error", err);
+              });
           }}
           style={{
             display: "flex",

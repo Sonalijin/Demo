@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { FarmerLogoIcon } from "../images";
 import { Link } from "react-router-dom";
 export const SignUp = () => {
@@ -122,7 +123,34 @@ export const SignUp = () => {
         />
         <div
           onClick={() => {
-            console.log("hello world", email, password);
+            console.log(
+              "@@@hello world",
+              email,
+              userName,
+              password,
+              confirmPassword
+            );
+            axios
+              .get(`http://localhost:3001`)
+              .then((res) => {
+                console.log("@@@@@@server se call bapas a gai", res);
+              })
+              .catch((err) => {
+                console.log("@@@@get error", err);
+              });
+            axios
+              .post(`http://localhost:3001/login`, {
+                email,
+                userName,
+                password,
+                confirmPassword,
+              })
+              .then((res) => {
+                console.log("@@@@@@server se call bapas a gai", res);
+              })
+              .catch((err) => {
+                console.log("@@@@get error", err);
+              });
           }}
           style={{
             display: "flex",
