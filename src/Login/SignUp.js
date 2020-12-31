@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FarmerLogoIcon } from "../images";
 import { Link } from "react-router-dom";
+
 export const SignUp = () => {
   const [email, setemail] = useState(void 0);
   const [userName, setUsername] = useState(void 0);
   const [password, setpassword] = useState(void 0);
   const [confirmPassword, setConfirmPassword] = useState(void 0);
+
   return (
     <div
       style={{
@@ -130,14 +132,15 @@ export const SignUp = () => {
               password,
               confirmPassword
             );
-            axios
+
+            /* axios
               .get(`http://localhost:3001`)
               .then((res) => {
                 console.log("@@@@@@server se call bapas a gai", res);
               })
               .catch((err) => {
                 console.log("@@@@get error", err);
-              });
+              });*/
             axios
               .post(`http://localhost:3001/login`, {
                 email,
@@ -146,6 +149,8 @@ export const SignUp = () => {
                 confirmPassword,
               })
               .then((res) => {
+                localStorage.setItem("token", JSON.stringify(res));
+                localStorage.getItem("token");
                 console.log("@@@@@@server se call bapas a gai", res);
               })
               .catch((err) => {
