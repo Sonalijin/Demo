@@ -64,6 +64,7 @@ export const Login = () => {
 
             width: "60%",
           }}
+          required
         />
         <input
           type="password"
@@ -86,21 +87,27 @@ export const Login = () => {
             backgroundColor: "#e7e7e7",
             width: "60%",
           }}
+          required
         />
-        <div
+        <Link
+          to="/Home"
           onClick={() => {
             console.log("@@@@@sonali", email, password);
-            axios
+            /* axios
               .get(`http://localhost:3001`)
               .then((res) => {
+                localStorage.setItem("token", JSON.stringify(res));
+                localStorage.getItem("token");
                 console.log("@@@@@@server se call bapas a gai", res);
               })
               .catch((err) => {
                 console.log("@@@@get error", err);
-              });
+              });*/
             axios
               .post(`http://localhost:3001/login`, { email, password })
               .then((res) => {
+                localStorage.setItem("token", JSON.stringify(res));
+                localStorage.getItem("token");
                 console.log("@@@@@@server se call bapas a gai", res);
               })
               .catch((err) => {
@@ -122,10 +129,10 @@ export const Login = () => {
           }}
         >
           Login
-        </div>
+        </Link>
         <div style={{ display: "flex", flexDirection: "row", marginTop: 20 }}>
-          <div>You haven't Account</div>
           <div style={{ paddingLeft: 4 }}>
+            You haven't Account
             <Link to="/SignUp"> SignUp Here.</Link>
           </div>
         </div>

@@ -2,6 +2,7 @@ import React from "react";
 import { Login } from "./Login";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { SignUp } from "./SignUp";
+import Home from "./Home";
 export const LoginRoute = () => {
   return (
     <Router>
@@ -21,6 +22,7 @@ export const LoginRoute = () => {
             exact
             component={() => <SignUp name="SignUp" />}
           />
+          <Route path="/Home" exact component={() => <Home name="Home" />} />
         </div>
       </Switch>
     </Router>
