@@ -1,19 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { FarmerLogoIcon } from "../images";
 
 export const Login = () => {
+  const history = useHistory();
   const [email, setemail] = useState(void 0);
   const [password, setpassword] = useState(void 0);
-
-  /*useEffect(() => {
-    axios.get("https://localhost:3000/login").then((res) => {
-      setemail(res.data);
-      setpassword(res.data);
-    });
-  }, []);*/
-
+  const [errors, setErrors] = useState({});
   return (
     <div
       style={{
@@ -23,6 +17,7 @@ export const Login = () => {
         backgroundColor: "#fff",
         borderRadius: 8,
         "box-shadow": "0px 6px 34px -5px rgba(0,0,0,0.74)",
+
         flexDirection: "row",
       }}
     >
@@ -42,6 +37,9 @@ export const Login = () => {
           {" "}
           Login Here
         </div>
+
+        {errors.serverError && <div>{errors.serverError}</div>}
+
         <input
           name="Email"
           type="email"
@@ -66,6 +64,7 @@ export const Login = () => {
           }}
           required
         />
+
         <input
           type="password"
           name="password"
@@ -89,25 +88,22 @@ export const Login = () => {
           }}
           required
         />
-        <Link
-          to="/Home"
+        <div
           onClick={() => {
-            console.log("@@@@@sonali", email, password);
-            /* axios
-              .get(`http://localhost:3001`)
-              .then((res) => {
-                localStorage.setItem("token", JSON.stringify(res));
-                localStorage.getItem("token");
-                console.log("@@@@@@server se call bapas a gai", res);
-              })
-              .catch((err) => {
-                console.log("@@@@get error", err);
-              });*/
             axios
-              .post(`http://localhost:3001/login`, { email, password })
+              .post(`http://localhost:3000/app/login`, {
+                email,
+                password,
+              })
+
               .then((res) => {
-                localStorage.setItem("token", JSON.stringify(res));
-                localStorage.getItem("token");
+                const { data } = res;
+
+                if (data && data.status) {
+                  history.push("/Chat");
+                } else {
+                  setErrors({ serverError: data.msg });
+                }
                 console.log("@@@@@@server se call bapas a gai", res);
               })
               .catch((err) => {
@@ -129,7 +125,7 @@ export const Login = () => {
           }}
         >
           Login
-        </Link>
+        </div>
         <div style={{ display: "flex", flexDirection: "row", marginTop: 20 }}>
           <div style={{ paddingLeft: 4 }}>
             You haven't Account

@@ -1,6 +1,6 @@
 {
   "homepage": "https://Sonalijin.github.io/Demo",
-  "proxy": "http://localhost:3001",
+  
   "name": "demo-resume",
   "version": "0.1.0",
   "private": true,
@@ -8,6 +8,7 @@
     "-": "0.0.1",
     "AsyncStorage": "^0.1.5",
     "axios": "^0.21.0",
+    "firebase": "^8.2.1",
     "react": "^16.11.0",
     "react-axios": "^2.0.3",
     "react-dom": "^16.11.0",
@@ -15,6 +16,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.2.0",
     "save": "^2.4.0",
+    "socket.io-client": "^3.1.0",
     "start": "^5.1.0"
   },
   "scripts": {
@@ -27,6 +29,7 @@
     "server": "node-env-run server --exec nodemon | pino-colada",
     "dev": "run-p server start"
   },
+  
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -54,5 +57,6 @@
     "nodemon": "^2.0.6",
     "npm-run-all": "^4.1.5",
     "pino-colada": "^2.1.0"
-  }
+  },
+  "proxy": "http://localhost:5000"
 }

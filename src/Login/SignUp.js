@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { FarmerLogoIcon } from "../images";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import validationInfo from "./validationInfo";
 
 export const SignUp = () => {
   const [email, setemail] = useState(void 0);
-  const [userName, setUsername] = useState(void 0);
   const [password, setpassword] = useState(void 0);
   const [confirmPassword, setConfirmPassword] = useState(void 0);
-
+  const [errors, setErrors] = useState({});
+  // return null;
+  const [serverError, setServerError] = useState({});
+  let history = useHistory();
   return (
     <div
       style={{
@@ -17,7 +20,7 @@ export const SignUp = () => {
         width: "70%",
         backgroundColor: "#fff",
         borderRadius: 8,
-        "box-shadow": "0px 6px 34px -5px rgba(0,0,0,0.74)",
+        boxShadow: "0px 6px 34px -5px rgba(0,0,0,0.74)",
         flexDirection: "row",
       }}
     >
@@ -34,6 +37,15 @@ export const SignUp = () => {
         }}
       >
         <div style={{ display: "flex", fontSize: 24 }}> SignUp Here</div>
+        <div
+          style={{
+            color: "red",
+            padding: "10px 12px",
+            marginBottom: -20,
+          }}
+        >
+          {errors.serverError && <div>{errors.serverError}</div>}
+        </div>
         <input
           name="Email"
           type="email"
@@ -56,29 +68,11 @@ export const SignUp = () => {
 
             width: "60%",
           }}
+          required
         />
-        <input
-          name="Username"
-          type="text"
-          placeholder="Username"
-          value={userName}
-          onChange={(e) => {
-            setUsername(e.target.value);
-          }}
-          style={{
-            display: "flex",
-            padding: "10px 12px",
-            margin: 5,
-            borderRadius: 20,
-            outline: "none",
-            backgroundColor: "",
-            borderWidth: 1,
-            borderColor: "rgba(0, 0, 0, 0.2)",
-            backgroundColor: "#e7e7e7",
-
-            width: "60%",
-          }}
-        />
+        <div style={{ color: "red", paddingRight: 230 }}>
+          {errors.email && <div>{errors.email}</div>}
+        </div>
         <input
           type="password"
           name="password"
@@ -94,19 +88,20 @@ export const SignUp = () => {
             margin: 5,
             borderRadius: 20,
             outline: "none",
-            backgroundColor: "",
             borderWidth: 1,
             borderColor: "rgba(0, 0, 0, 0.2)",
             backgroundColor: "#e7e7e7",
             width: "60%",
           }}
         />
+        <div style={{ color: "red", paddingRight: 203 }}>
+          {errors.password && <div>{errors.password}</div>}
+        </div>
         <input
           type="password"
           name="confirmPassword"
           placeholder="Confirm Password"
           value={confirmPassword}
-          onchange={setConfirmPassword}
           onChange={(e) => {
             setConfirmPassword(e.target.value);
           }}
@@ -123,34 +118,41 @@ export const SignUp = () => {
             width: "60%",
           }}
         />
+        <div style={{ color: "red", paddingRight: 185 }}>
+          {errors.confirmPassword && <div>{errors.confirmPassword}</div>}
+        </div>
         <div
           onClick={() => {
-            console.log(
-              "@@@hello world",
+            let { errors, hasError } = validationInfo({
               email,
-              userName,
               password,
-              confirmPassword
-            );
+              confirmPassword,
+            });
 
-            /* axios
-              .get(`http://localhost:3001`)
-              .then((res) => {
-                console.log("@@@@@@server se call bapas a gai", res);
-              })
-              .catch((err) => {
-                console.log("@@@@get error", err);
-              });*/
+            if (hasError) {
+              setErrors(errors);
+              return;
+            }
+
             axios
-              .post(`http://localhost:3001/login`, {
-                email,
-                userName,
-                password,
-                confirmPassword,
-              })
+              .post(
+                `http://localhost:5000/app/signup`,
+
+                {
+                  email,
+                  password,
+                  confirmPassword,
+                }
+              )
               .then((res) => {
-                localStorage.setItem("token", JSON.stringify(res));
-                localStorage.getItem("token");
+                // localStorage.setItem("token", JSON.stringify(res));
+                // localStorage.getItem("token");
+                const { data } = res;
+                if (data && !data.status) {
+                  setErrors({ serverError: data.msg });
+                } else if (data && data.status === true) {
+                  history.push("/login");
+                }
                 console.log("@@@@@@server se call bapas a gai", res);
               })
               .catch((err) => {
@@ -173,6 +175,7 @@ export const SignUp = () => {
         >
           SignUp
         </div>
+
         <div style={{ display: "flex", flexDirection: "row", marginTop: 20 }}>
           <div>You Account</div>
           <div style={{ paddingLeft: 4 }}>
