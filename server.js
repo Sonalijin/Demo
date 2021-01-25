@@ -1,33 +1,43 @@
-const cors = require("cors");
 const express = require("express");
-const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+//const chat = require("./app/chat/index");
+const routesUrl = require("./app/routes/SignUpRoutes");
+//const db = require("./chat/db/db.js");
+const Message = require("./app/chat/models/message.js");
 const app = express();
+const cors = require("cors");
+const frontUrl = "http://localhost:3000";
+// const dbUrl =
+//   "mongodb+srv://Chat-App:Chat-App@cluster0.rbfdm.mongodb.net/Message?retryWrites=true&w=majority";
+// db.connect(dbUrl);
+dotenv.config();
+mongoose.connect(
+  process.env.DATABASE_ACCESS,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => console.log("database connected")
+);
 
-const port = 3001;
-app.use(bodyParser.urlencoded({ extended: false }));
-/*app.get("/login", (req, res) => {
-  const name = req.query.name || "";
-  res.setHeader("content-Type", "application/json");
-  res.send("hello");
-});*/
-app.use(cors());
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
+app.use(express.json());
+app.use(
+  cors({ origin: frontUrl, optionsSuccessStatus: 200, credentials: true })
+);
 
-  next();
-});
-app.get("/", (req, res) => {
-  res.send("Hello World!", req, req.body);
-});
-app.post("/login", (req, res) => {
-  console.log("@@@##sonali", req, req.body);
-  res.send("hello");
-});
+app.use("/app", routesUrl);
 
-app.listen(port, () => {
-  console.log(`server started ${port}`);
-});
+const server = app.listen(5000, () => `port is set up and runing`);
+const startSocket = () => {
+  const socket = require("socket.io")(server);
+  socket.on("connection", async (client) => {
+    console.log("client connected...");
+
+    client.on("message", async (msg) => {
+      let message = await Message.Schema.statics.create(msg);
+      socket.emit("message", message);
+    });
+
+    let latest = await Message.Schema.statics.latest(10);
+    client.emit("latest", latest);
+  });
+};
+startSocket();
